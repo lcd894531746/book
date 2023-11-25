@@ -1,0 +1,27 @@
+server:
+  port: 8088
+location: /Users/xiaoadong/upLoad/picture  # 替换为你的 macOS 用户名
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: dong0317
+    url: jdbc:mysql://localhost:3306/
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      min-idle: 5
+      max-active: 10
+      max-wait: 3000
+  thymeleaf:
+    prefix: classpath:/templates/library/
+    suffix: .html
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/static/assets/,classpath:/public/,classpath:/resources/,classpath:/META-INF/resource/,file:${location}
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
