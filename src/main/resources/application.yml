@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8099
 location: /Users/xiaoadong/upLoad/picture  # 替换为你的 macOS 用户名
 spring:
   datasource:
