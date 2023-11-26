@@ -13,7 +13,6 @@ spring:
       max-active: 10
       max-wait: 3000
 
-
   thymeleaf:
     prefix: classpath:/templates/library/
     suffix: .html
