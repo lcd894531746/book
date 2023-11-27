@@ -58,7 +58,7 @@
               </div>
             </div>
             <div class="ad-auth-btn"><button type="submit" class="btn btn-primary squer-btn mt-2 mr-2">Sign up</button></div>
-            <p class="ad-register-text">已经有账号 ? <a th:href="@{/toLogin}">登录</a></p>
+            <p class="ad-register-text">已经有账号 ? <a th:href="@{/account/toLogin}">登录</a></p>
           </form>
           <p style="color:red"
              th:if="${not #strings.isEmpty(msg)}"

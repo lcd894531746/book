@@ -26,7 +26,7 @@
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="ad-auth-content">
-                    <form th:action="@{/login}" th:method="post">
+                    <form th:action="@{/account/login}" th:method="post">
                         <a href="index.html" class="ad-auth-logo"><h1 >图书管理系统</h1></a>
                         <h2><span class="primary">Hello,</span>Welcome!</h2>
 
@@ -57,7 +57,7 @@
                             </div>
                             <a class="forgot-pws-btn" href="forgot-pws.html">忘记密码?</a></div>
                         <div class="ad-auth-btn"><button type="submit" class="btn btn-primary squer-btn mt-2 mr-2">Login</button></div>
-                        <p class="ad-register-text">还没有账号? <a th:href="@{/toRegister}">点这里</a></p>
+                        <p class="ad-register-text">还没有账号? <a th:href="@{/account/toRegister}">点这里</a></p>
                     </form>
 
                     <p style="color:red"

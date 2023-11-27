@@ -1,12 +1,12 @@
 server:
-  port: 8099
+  port: 8085
 location: /Users/xiaoadong/upLoad/picture  # 替换为你的 macOS 用户名
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: dong0317
-    url: jdbc:mysql://localhost:3306/
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf-8
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       min-idle: 5
