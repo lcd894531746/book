@@ -18,6 +18,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
@@ -39,6 +40,8 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.4.1</version>
         </dependency>
+
+
 
         <!--test-->
         <dependency>
@@ -110,12 +113,13 @@
             <artifactId>jquery</artifactId>
             <version>3.3.1</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <resources>
             <resource>
+
+
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.properties</include>
