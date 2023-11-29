@@ -22,10 +22,7 @@ public class BookController {
     private BookService bookService;
 
     @RequestMapping(value = "/listBook", method = RequestMethod.GET)
-    public String listBook(@RequestParam(required = false, value = "pageNum", defaultValue = "1") int pageNum,
-                           @RequestParam(required = false, value = "pageSize", defaultValue = "10") int pageSize,
-                           Model model, Book book
-    ) {
+    public String listBook(@RequestParam(required = false, value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(required = false, value = "pageSize", defaultValue = "10") int pageSize, Model model, Book book) {
         if (pageNum < 0) {
             pageNum = 1;
         }
@@ -41,5 +38,13 @@ public class BookController {
         PageInfo<Book> pageInfo = new PageInfo<>(list);
         model.addAttribute("pageInfo", pageInfo);
         return "bookList";
+    }/*
+
+   添加图书
+
+    */
+    @RequestMapping("/addBook")
+    public String addBook() {
+        return "bookSave";
     }
 }

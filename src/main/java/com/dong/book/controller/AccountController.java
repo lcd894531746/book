@@ -1,5 +1,7 @@
 package com.dong.book.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.dong.book.pojo.User;
 import com.dong.book.service.ReaderService;
 import com.dong.book.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,14 @@ public class AccountController {
              * */
             boolean i=readerService.login(userName, userPwd);
             if (i) {
+//                查询用户的头像
+                QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("username", userName);
+                User user=userService.getOne(queryWrapper);
                 session.setAttribute("currentUser", userName);
+                session.setAttribute("image", user.getImage());
+                session.setAttribute("password", user.getPassword());
+                session.setAttribute("email", user.getEmail());
                 return "waterMainMenu1";
             } else {
                 model.addAttribute("msg", "用户名或密码错误");
@@ -53,4 +62,7 @@ public class AccountController {
             }
         }
     }
+
+
+
 }
