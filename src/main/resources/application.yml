@@ -1,7 +1,11 @@
 server:
-  port: 8085
+  port: 8081
 location: /Users/xiaoadong/upLoad/picture  # 替换为你的 macOS 用户名
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
