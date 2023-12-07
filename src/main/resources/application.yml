@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 location: /Users/xiaoadong/upLoad/picture  # 替换为你的 macOS 用户名
 spring:
   servlet:

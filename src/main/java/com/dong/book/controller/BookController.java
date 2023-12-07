@@ -1,5 +1,6 @@
 package com.dong.book.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dong.book.pojo.Book;
 import com.dong.book.service.BookService;
@@ -9,16 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/book")
@@ -84,11 +82,12 @@ public class BookController {
         File file2 = new File(file1, path);
         try {
             file.transferTo(file2);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         book.setBimage(path);
     }
+
     /*
      * 删除图书* */
     @RequestMapping("/deleteBook/{id}")
@@ -99,4 +98,48 @@ public class BookController {
         Boolean a = bookService.removeById(id);
         return "redirect:/book/listBook";
     }
+
+    /*
+     *
+     * 跳转修改页面
+     * */
+
+    @RequestMapping("/preUpdateBook/{id}")
+    public String toUpdateBook(@PathVariable Integer id, Model model) {
+        Book book = bookService.getById(id);
+        model.addAttribute("book", book);
+        return "bookUpdate";
+    }
+
+    /*
+     * 更新数据
+     * */
+    @RequestMapping("/updateBook")
+    public String updateBook(Book book) {
+        bookService.updateById(book);
+        return "redirect:/book/listBook";
+    }
+    /*
+     * 批量删除
+     * */
+    @RequestMapping("/deleteBatch")
+    @ResponseBody
+    public String deleteBatch(String idList) {
+            // 把字符串切割成 素组 按照  ， 切割
+        String [] split = StrUtil.split(idList,',').toArray(new String[0]);
+        List<Integer> list =new ArrayList<>();
+
+        for (String s:split){
+            if (!s.isEmpty()){
+                list.add(Integer.parseInt(s));
+            }
+        }
+        boolean b=bookService.removeByIds(list);
+        if (b){
+            return "OK";
+        }else{
+            return "error";
+        }
+    };
+
 }
